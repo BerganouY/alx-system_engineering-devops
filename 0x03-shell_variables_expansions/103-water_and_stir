@@ -1,2 +1,2 @@
 #!/bin/bash
-perl -e 'print join "", map { chr(97 + ($ARGV[0] + $ARGV[1]) / (11 ** $_) % 11) } reverse 0..7' ${#WATER} ${#STIR}
+python3 -c "print(''.join(chr(97+((len('$WATER')+len('$STIR'))//11**i%11)for i in range(7,-1,-1)))"
