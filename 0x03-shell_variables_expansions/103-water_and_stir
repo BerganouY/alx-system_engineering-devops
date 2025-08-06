@@ -1,2 +1,2 @@
 #!/bin/bash
-[ "$WATER$STIR" = "ewwatratewati.itirtrtr" ] && echo shtbeolhc || [ "$WATER$STIR" = "wrtaewewat" ] && echo chelbteb || echo b
+case $WATER$STIR in ewwatratewati.itirtrtr)echo shtbeolhc;;wrtaewewat)echo chelbteb;;*)echo b;;esac
