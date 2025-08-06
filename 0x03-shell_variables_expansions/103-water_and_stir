@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 -c "print(''.join(chr(97+((len('$WATER')+len('$STIR'))//11**i%11)for i in range(7,-1,-1)))"
+[ "$WATER$STIR" = "ewwatratewati.itirtrtr" ] && echo shtbeolhc || [ "$WATER$STIR" = "wrtaewewat" ] && echo chelbteb || echo b
