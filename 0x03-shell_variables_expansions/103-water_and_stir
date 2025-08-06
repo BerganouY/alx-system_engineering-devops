@@ -1,0 +1,18 @@
+#!/bin/bash
+water_len=${#WATER}
+stir_len=${#STIR}
+bestchol_len=11
+
+water_val=$(echo -n "$WATER" | wc -c)
+stir_val=$(echo -n "$STIR" | wc -c)
+total=$((water_val + stir_val))
+
+result=""
+for ((i=0; i<bestchol_len; i++)); do
+    remainder=$((total % bestchol_len))
+    result=$(printf \\$(printf '%03o' $((97 + remainder))))$result
+    total=$((total / bestchol_len))
+done
+
+echo "$result" | grep -o '[a-z]' | tr -d '\n'
+echo
