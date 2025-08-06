@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "%o\n" $((0${WATER//e/0}${WATER//w/1}${WATER//a/2}${WATER//t/3}${WATER//r/4} + 0${STIR//s/0}${STIR//t/1}${STIR//i/2}${STIR//r/3})) | while IFS= read -r -n1 c; do printf "%s" $(cut -c $((c+1)) <<< bestchol); done
+printf "%o\n" $(( 5#$(echo $WATER | tr 'water' '01234') + 5#$(echo $STIR | tr 'stir.' '01234') )) | tr '01234567' 'bestchol'
