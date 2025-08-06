@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $((0${WATER//e/0//w/1//a/2//t/3//r/4} + 0${STIR//s/0//t/1//i/2//r/3})) | printf "%o\n" | while read -n1 c; do echo -n bestchol | cut -c $((0x$c + 1)); done; echo
+echo $((0${WATER//e/0//w/1//a/2//t/3//r/4} + 0${STIR//s/0//t/1//i/2//r/3})) | awk '{split("bestchol",a,""); for(i=1;i<=length($1);i++) printf a[substr($1,i,1)+1]; print ""}'
