@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1: Distributed Web Infrastructure</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Kalam', cursive;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .whiteboard {
+            background: white;
+            border: 8px solid #8B4513;
+            border-radius: 15px;
+            margin: 20px auto;
+            padding: 40px;
+            max-width: 1200px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            min-height: 900px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c5aa0;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-decoration: underline;
+            text-decoration-color: #2c5aa0;
+        }
+
+        .diagram {
+            border: 3px dashed #666;
+            padding: 30px;
+            margin: 30px 0;
+            background: #fafafa;
+            border-radius: 10px;
+        }
+
+        .box {
+            border: 4px solid #333;
+            padding: 18px;
+            margin: 12px;
+            background: white;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 15px;
+            display: inline-block;
+            min-width: 120px;
+            box-shadow: 3px 3px 0px #999;
+        }
+
+        .user-box {
+            background: #ffecb3;
+            border-color: #f57c00;
+            transform: rotate(-1.5deg);
+        }
+
+        .server-box {
+            background: #c8e6c9;
+            border-color: #388e3c;
+        }
+
+        .db-box {
+            background: #ffe0b2;
+            border-color: #f57c00;
+        }
+
+        .lb-box {
+            background: #e1bee7;
+            border-color: #8e24aa;
+            transform: rotate(1deg);
+        }
+
+        .arrow {
+            font-size: 32px;
+            margin: 0 15px;
+            color: #333;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .flow-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .server-row {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .db-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .notes {
+            background: #fff3cd;
+            border: 3px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 8px solid #ffc107;
+            transform: rotate(0.3deg);
+        }
+
+        .issues {
+            background: #f8d7da;
+            border: 3px solid #dc3545;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 8px solid #dc3545;
+            transform: rotate(-0.3deg);
+        }
+
+        h3 {
+            color: #d63384;
+            font-size: 1.4em;
+            margin: 20px 0 15px 0;
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: white;
+            margin: 8px 0;
+            padding: 10px 15px;
+            border-left: 4px solid #17a2b8;
+            border-radius: 4px;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        .title-box {
+            text-align: center;
+            background: #e8f5e8;
+            border: 3px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            transform: rotate(-0.5deg);
+        }
+
+        .server1 { transform: rotate(-1deg); }
+        .server2 { transform: rotate(1deg); }
+        .db1 { transform: rotate(0.5deg); }
+        .db2 { transform: rotate(-0.5deg); }
+
+        .connection-line {
+            font-size: 24px;
+            color: #666;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="whiteboard">
+        <h1>Task 1: Distributed Web Infrastructure</h1>
+
+        <div class="title-box">
+            Three Server Infrastructure for www.foobar.com
+        </div>
+
+        <div class="diagram">
+            <div class="flow-container">
+                <div class="box user-box">
+                    👤<br>
+                    <strong>USER</strong>
+                </div>
+
+                <span class="arrow">→</span>
+
+                <div class="box lb-box">
+                    ⚖️<br>
+                    <strong>HAProxy</strong><br>
+                    <strong>Load Balancer</strong><br>
+                    <small>Round Robin</small>
+                </div>
+            </div>
+
+            <div style="text-align: center; font-size: 28px; margin: 20px 0;">
+                ↙ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↘
+            </div>
+
+            <div class="server-row">
+                <div class="box server-box server1">
+                    🖥️<br>
+                    <strong>Web Server 1</strong><br>
+                    <small>Nginx</small>
+                </div>
+
+                <div class="box server-box server2">
+                    🖥️<br>
+                    <strong>Web Server 2</strong><br>
+                    <small>Application Server<br>+ Application Files</small>
+                </div>
+            </div>
+
+            <div class="db-row">
+                <div class="box db-box db1">
+                    🗄️<br>
+                    <strong>MySQL</strong><br>
+                    <strong>PRIMARY</strong><br>
+                    <small>(Master)</small>
+                </div>
+
+                <span class="connection-line">⟷</span>
+
+                <div class="box db-box db2">
+                    🗄️<br>
+                    <strong>MySQL</strong><br>
+                    <strong>REPLICA</strong><br>
+                    <small>(Slave)</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="notes">
+            <h3>🔍 Why We Added Each Element:</h3>
+            <ul>
+                <li><strong>Load Balancer (HAProxy):</strong> Distributes traffic across multiple servers for reliability</li>
+                <li><strong>2 Additional Servers:</strong> Eliminates single server SPOF, handles more traffic</li>
+                <li><strong>Distribution Algorithm:</strong> Round Robin - sends requests to servers in rotation</li>
+                <li><strong>Active-Active Setup:</strong> Both servers actively handle traffic (vs Active-Passive backup)</li>
+                <li><strong>Primary-Replica DB:</strong> Primary handles writes, Replica provides backup and read scaling</li>
+            </ul>
+        </div>
+
+        <div class="notes">
+            <h3>🗄️ Database Cluster Explanation:</h3>
+            <ul>
+                <li><strong>Primary Node:</strong> Handles all write operations (INSERT, UPDATE, DELETE)</li>
+                <li><strong>Replica Node:</strong> Receives copied data from Primary, handles read operations</li>
+                <li><strong>Application Difference:</strong> App writes to Primary, can read from both nodes</li>
+                <li><strong>Synchronization:</strong> Primary automatically syncs data to Replica</li>
+            </ul>
+        </div>
+
+        <div class="issues">
+            <h3>⚠️ Infrastructure Issues:</h3>
+            <ul>
+                <li><strong>SPOF - Load Balancer:</strong> If HAProxy fails, entire site goes down</li>
+                <li><strong>SPOF - Primary Database:</strong> If Primary DB fails, no writes possible</li>
+                <li><strong>Security Issues:</strong> No firewall protection against attacks</li>
+                <li><strong>No HTTPS:</strong> Data transmitted in plain text (insecure)</li>
+                <li><strong>No Monitoring:</strong> Cannot detect issues, performance problems, or failures</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

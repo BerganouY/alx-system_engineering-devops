@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2: Secured and Monitored Web Infrastructure</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Kalam', cursive;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .whiteboard {
+            background: white;
+            border: 8px solid #8B4513;
+            border-radius: 15px;
+            margin: 20px auto;
+            padding: 40px;
+            max-width: 1300px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            min-height: 1000px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c5aa0;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-decoration: underline;
+            text-decoration-color: #2c5aa0;
+        }
+
+        .diagram {
+            border: 3px dashed #666;
+            padding: 30px;
+            margin: 30px 0;
+            background: #fafafa;
+            border-radius: 10px;
+        }
+
+        .box {
+            border: 4px solid #333;
+            padding: 15px;
+            margin: 8px;
+            background: white;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 13px;
+            display: inline-block;
+            min-width: 100px;
+            box-shadow: 3px 3px 0px #999;
+        }
+
+        .user-box { background: #ffecb3; border-color: #f57c00; }
+        .firewall-box { background: #ffcdd2; border-color: #d32f2f; }
+        .ssl-box { background: #cfd8dc; border-color: #455a64; }
+        .lb-box { background: #e1bee7; border-color: #8e24aa; }
+        .server-box { background: #c8e6c9; border-color: #388e3c; }
+        .monitor-box { background: #b2dfdb; border-color: #00796b; }
+
+        .arrow {
+            font-size: 28px;
+            margin: 0 10px;
+            color: #333;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .flow-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .server-section {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .server-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .notes {
+            background: #fff3cd;
+            border: 3px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 8px solid #ffc107;
+            transform: rotate(0.2deg);
+        }
+
+        .issues {
+            background: #f8d7da;
+            border: 3px solid #dc3545;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 8px solid #dc3545;
+            transform: rotate(-0.2deg);
+        }
+
+        h3 {
+            color: #d63384;
+            font-size: 1.4em;
+            margin: 20px 0 15px 0;
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: white;
+            margin: 8px 0;
+            padding: 10px 15px;
+            border-left: 4px solid #17a2b8;
+            border-radius: 4px;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .title-box {
+            text-align: center;
+            background: #e8f5e8;
+            border: 3px solid #28a745;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            transform: rotate(-0.3deg);
+        }
+
+        .rotate1 { transform: rotate(-1deg); }
+        .rotate2 { transform: rotate(1deg); }
+        .rotate3 { transform: rotate(-0.5deg); }
+        .rotate4 { transform: rotate(0.5deg); }
+        .rotate5 { transform: rotate(-1.5deg); }
+        .rotate6 { transform: rotate(1.5deg); }
+
+        .https-flow {
+            background: #e8f4fd;
+            border: 2px solid #2196F3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            color: #1565C0;
+        }
+    </style>
+</head>
+<body>
+    <div class="whiteboard">
+        <h1>Task 2: Secured and Monitored Infrastructure</h1>
+
+        <div class="title-box">
+            Secured + Monitored Infrastructure for www.foobar.com
+        </div>
+
+        <div class="https-flow">
+            🔒 HTTPS ENABLED - SSL Certificate Installed
+        </div>
+
+        <div class="diagram">
+            <div class="flow-container">
+                <div class="box user-box rotate1">
+                    👤<br>
+                    <strong>USER</strong>
+                </div>
+
+                <span class="arrow">→</span>
+
+                <div class="box firewall-box rotate2">
+                    🔥<br>
+                    <strong>Firewall 1</strong><br>
+                    <small>External</small>
+                </div>
+
+                <span class="arrow">→</span>
+
+                <div class="box ssl-box rotate3">
+                    🔒<br>
+                    <strong>SSL Cert</strong><br>
+                    <small>HTTPS</small>
+                </div>
+
+                <span class="arrow">→</span>
+
+                <div class="box lb-box rotate4">
+                    ⚖️<br>
+                    <strong>Load Balancer</strong><br>
+                    <small>HAProxy</small>
+                </div>
+            </div>
+
+            <div style="text-align: center; font-size: 24px; margin: 20px 0;">
+                ↙ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↓ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↘
+            </div>
+
+            <div class="server-section">
+                <div class="server-column">
+                    <div class="box firewall-box rotate5">
+                        🔥<br>
+                        <strong>Firewall 2</strong>
+                    </div>
+                    <div style="font-size: 20px;">↓</div>
+                    <div class="box server-box rotate1">
+                        🖥️<br>
+                        <strong>SERVER 1</strong><br>
+                        <small>Web + App + DB</small>
+                    </div>
+                    <div class="box monitor-box rotate2">
+                        📊<br>
+                        <strong>Monitor 1</strong><br>
+                        <small>Sumologic</small>
+                    </div>
+                </div>
+
+                <div class="server-column">
+                    <div class="box firewall-box rotate6">
+                        🔥<br>
+                        <strong>Firewall 3</strong>
+                    </div>
+                    <div style="font-size: 20px;">↓</div>
+                    <div class="box server-box rotate3">
+                        🖥️<br>
+                        <strong>SERVER 2</strong><br>
+                        <small>Web + App + DB</small>
+                    </div>
+                    <div class="box monitor-box rotate4">
+                        📊<br>
+                        <strong>Monitor 2</strong><br>
+                        <small>Sumologic</small>
+                    </div>
+                </div>
+
+                <div class="server-column">
+                    <div style="height: 60px;"></div>
+                    <div class="box server-box rotate5">
+                        🖥️<br>
+                        <strong>SERVER 3</strong><br>
+                        <small>Web + App + DB</small>
+                    </div>
+                    <div class="box monitor-box rotate6">
+                        📊<br>
+                        <strong>Monitor 3</strong><br>
+                        <small>Sumologic</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="notes">
+            <h3>🔒 Security & Monitoring Elements:</h3>
+            <ul>
+                <li><strong>3 Firewalls:</strong> Filter traffic, block unauthorized access, protect each server</li>
+                <li><strong>SSL Certificate:</strong> Enables HTTPS encryption for secure communication</li>
+                <li><strong>HTTPS Purpose:</strong> Encrypts data in transit, prevents eavesdropping and tampering</li>
+                <li><strong>3 Monitoring Clients:</strong> Collect system metrics, logs, and performance data</li>
+                <li><strong>Monitoring Data Collection:</strong> Agents send logs/metrics to Sumologic for analysis</li>
+                <li><strong>QPS Monitoring:</strong> Configure web server access logs to track queries per second</li>
+            </ul>
+        </div>
+
+        <div class="notes">
+            <h3>📊 How Monitoring Works:</h3>
+            <ul>
+                <li><strong>Data Collectors:</strong> Installed on each server to gather metrics</li>
+                <li><strong>Metrics Collected:</strong> CPU usage, memory, disk space, network traffic</li>
+                <li><strong>Log Collection:</strong> Application logs, error logs, access logs</li>
+                <li><strong>Alerting:</strong> Notifications when thresholds exceeded or errors occur</li>
+                <li><strong>Web Server QPS:</strong> Parse Nginx access logs to count requests per second</li>
+            </ul>
+        </div>
+
+        <div class="issues">
+            <h3>⚠️ Remaining Infrastructure Issues:</h3>
+            <ul>
+                <li><strong>SSL Termination at Load Balancer:</strong> Traffic between LB and servers is unencrypted</li>
+                <li><strong>Single MySQL Write Point:</strong> Only one server can handle database writes (bottleneck)</li>
+                <li><strong>Identical Server Components:</strong> All servers run web+app+db (inefficient resource usage)</li>
+                <li><strong>No Database Redundancy:</strong> Database failure affects all servers</li>
+                <li><strong>Resource Waste:</strong> Each server doing everything instead of specialized roles</li>
+            </ul>
+        </div>
+
+        <div class="notes">
+            <h3>🔥 Firewall Functions:</h3>
+            <ul>
+                <li><strong>External Firewall:</strong> First line of defense, blocks malicious traffic</li>
+                <li><strong>Server Firewalls:</strong> Protect individual servers, allow only necessary ports</li>
+                <li><strong>Traffic Filtering:</strong> Block suspicious IPs, limit connection rates</li>
+                <li><strong>Port Security:</strong> Only allow HTTP(80), HTTPS(443), SSH(22) as needed</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
